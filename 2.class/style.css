@@ -12,7 +12,7 @@ html,body {
 div{
     height: 100px;
     width: 100px;
-    background-color: crimson;
+    background-color: rgb(228, 94, 121);
 }
 button {
     margin-top: 20px;
