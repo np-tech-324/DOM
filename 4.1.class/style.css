@@ -37,7 +37,7 @@ main{
 }
 
 .inner {
-    width: 10%;
+    width: 0;
     height: 100%;
     background-color: green;
     border-radius: 20px;
@@ -52,7 +52,7 @@ main{
 
 .bottom button {
     padding: 20px 40px;
-    background-color: green;
+    background-color: green;    
     border: none;
     border-radius: 30px;    
 }
@@ -61,6 +61,14 @@ main{
     scale: 0.9;
 }
 
-.bottom h1 {
+.bottom h1 {    
     font-size: 70px;
+}
+
+.bottom button:hover {
+    background: #cfdb23;
+}
+
+.bottom button:active {
+    transform: scale(0.92);
 }

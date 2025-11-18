@@ -6,11 +6,18 @@ var inner = document.querySelector('.inner')
 
 
 btn.addEventListener('click',function(){
+    btn.style.pointerEvents = "none"
     
-    setInterval(() => {
+    var int = setInterval(() => {
         h1.innerHTML = grow + "%"
         inner.style.width = grow + "%"
+        // btn.style.opacity = "0"
         grow++
     },50);
+    setTimeout(() => {
+        clearInterval(int)
+        btn.style.opacity = "80%"
+
+    }, 5050);
 })
 
