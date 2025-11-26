@@ -220,11 +220,13 @@ const reels = [
     sendCount: 505
   }
 ];
+var reel = document.querySelector('.all-reel')
 
 
-let sum = ''
+function allData(){
+  let sum = ''
 
-reels.forEach(function(elem){
+  reels.forEach(function(elem,idx){
 
     // console.log(elem.video);
     
@@ -234,7 +236,7 @@ reels.forEach(function(elem){
                     <div class="bottom-1">
                         <img src=${elem.userImage} alt="">
                         <h4>${elem.userName}</h4>
-                        <button>${elem.isFollow === true ? "Follow" : "unFollow"}</button>
+                        <button id=${idx} class="follow">${elem.isFollow === true ? "Follow" : "unFollow"}</button>
                     </div>
                     <h5>${elem.description}
 
@@ -242,24 +244,58 @@ reels.forEach(function(elem){
                 </div>
                 <div class="icon">
                     <div class="like-icon">
-                        <h4><i class="${elem.isLike ? 'ri-heart-3-fill liked' : 'ri-heart-3-line'}"></i></h4>
+                        <h4><i id=${idx} class="${elem.isLike ? 'ri-heart-3-fill liked' : 'ri-heart-3-fill'}"></i></h4>
                         <h6>${elem.likeCount}</h6>
                     </div>
                     <div class="comment-icon">
-                        <h4><i class="ri-chat-3-line"></i></h4>
+                        <h4 ><i id=${idx} class="ri-chat-3-line"></i></h4>
                         <h6>${elem.commentCount}</h6>
                     </div>
                     <div class="send-icon">
-                        <h4><i class="ri-send-plane-fill"></i></i></h4>
+                        <h4><i id=${idx} class="ri-send-plane-fill"></i></h4>
                         <h6>${elem.sendCount}</h6>
                     </div>
                     <div class="dot-icon">
-                        <h4><i class="ri-more-2-fill"></i></h4>
+                    <div >
+                    <h4><i id=${idx} class="ri-more-2-fill"></i></h4>
+                      </div>
                     </div>
                 </div>
             </div>`
  })
 
-var reel = document.querySelector('.all-reel')
+
 
 reel.innerHTML = sum
+
+
+}
+
+allData()
+
+reel.addEventListener('click', function(dets){
+
+  if(dets.target.className == 'follow'){
+    if(!reels[dets.target.id].isFollow){
+      reels[dets.target.id].isFollow = true
+    }else{
+      reels[dets.target.id].isFollow = false
+    }
+  }
+  if (dets.target.classList.contains('ri-heart-3-fill')) {
+    
+    if(!reels[dets.target.id].isLike){
+      reels[dets.target.id].likeCount++
+      reels[dets.target.id].isLike = true
+    }else{
+      reels[dets.target.id].likeCount--
+      reels[dets.target.id].isLike = false
+    }
+  }
+  
+  console.log(dets.target.className);
+  
+
+allData()
+
+})
